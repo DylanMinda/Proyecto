@@ -9,13 +9,15 @@ namespace Spotify.Entidades
 {
     public class Cancion
     {
-        [Key] public int Id { get; set; }
+        public int Id { get; set; }
         public string Titulo { get; set; }
         public string Artista { get; set; }
-        public string Album { get; set; }
-        public TimeSpan Duracion { get; set; }
-        public DateTime FechaLanzamiento { get; set; }
+        public string? Album { get; set; }
         public string Genero { get; set; }
+        public TimeSpan Duracion { get; set; }
+        public string UrlArchivo { get; set; } // puede ser una URL local o pública
 
+        public List<PlaylistCancion> PlaylistCanciones { get; set; } = new();
     }
+
 }
