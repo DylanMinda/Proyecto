@@ -1,14 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Numerics;
+﻿using Spotify.Entidades;
 
-namespace Spotify.Entidades
+public class Usuario
 {
-    public class Usuario
-    {
-        [Key]public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Correo { get; set; }
-
-    }
-
+    public int Id { get; set; }
+    public string Nombre { get; set; }
+    public string Correo { get; set; }
+    public string TipoCuenta { get; set; } // Free o Premium
+    public int? PlanId { get; set; }
+    public Plan? Plan { get; set; }
 }
