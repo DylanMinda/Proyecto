@@ -32,11 +32,12 @@ namespace Spotify.MVC.Controllers
         { // Verificar las credenciales del usuario
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
 
-            if (usuario == null || !BCrypt.Net.BCrypt.Verify(contraseña, usuario.Contraseña))
+            if (!BCrypt.Net.BCrypt.Verify(contraseña, usuario.Contraseña))
             {
                 ViewBag.ErrorMessage = "Email o contraseña no son correctos";
-                return View("Index");  // Si el login falla, mostrar mensaje de error y retornar al login
+                return View("Index");
             }
+
 
             // Guardar el ID del usuario en la sesión
             HttpContext.Session.SetInt32("UserId", usuario.Id);
@@ -150,7 +151,7 @@ namespace Spotify.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> RecuperarContraseña(string email)
         {
-            var usuario = CRUD<Usuario>.GetAll().FirstOrDefault(u => u.Email == email);
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
             if (usuario == null)
             {
                 ViewBag.ErrorMessage = "El correo electrónico no está registrado.";
