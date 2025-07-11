@@ -31,7 +31,8 @@ builder.Services.AddControllersWithViews();
         .AddCookie("Cookies", options =>
         {
             options.LoginPath = "/Login/Index"; // Ruta de inicio de sesión
-
+            options.SlidingExpiration = true;  // Para que la cookie se mantenga activa
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;  // Cookies seguras solo sobre HTTPS
 
         });
     builder.Services.AddHttpContextAccessor(); // Para acceder al contexto HTTP en los servicios //cokies
