@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Canciones\**" />
+    <Content Remove="Views\Canciones\**" />
+    <EmbeddedResource Remove="Views\Canciones\**" />
+    <None Remove="Views\Canciones\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.13.0" />
+    <PackageReference Include="MimeKit" Version="4.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Spotify.APIConsumer\Spotify.APIConsumer.csproj" />
+    <ProjectReference Include="..\Spotify.API\Spotify.API.csproj" />
+    <ProjectReference Include="..\Spotify.Modelos\Spotify.Modelos.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Usuarios\" />
+  </ItemGroup>
+
+</Project>
